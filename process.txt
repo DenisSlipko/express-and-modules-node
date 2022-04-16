@@ -1,0 +1,631 @@
+Statistical profiling result from isolate-0x7fd0e5700000-32073-v8.log, (749 ticks, 6 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     83   11.1%          /usr/lib/system/libsystem_pthread.dylib
+     41    5.5%          /usr/lib/system/libsystem_c.dylib
+     23    3.1%          /usr/lib/libc++.1.dylib
+     10    1.3%          /usr/lib/system/libsystem_platform.dylib
+      8    1.1%          /usr/lib/system/libsystem_malloc.dylib
+      8    1.1%          /usr/lib/system/libsystem_kernel.dylib
+      4    0.5%          /usr/lib/libc++abi.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+
+ [C++]:
+   ticks  total  nonlib   name
+    254   33.9%   44.4%  t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+    210   28.0%   36.7%  T node::native_module::NativeModuleEnv::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+     49    6.5%    8.6%  T _semaphore_create
+     11    1.5%    1.9%  T ___commpage_gettimeofday
+      8    1.1%    1.4%  t std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > std::__1::__pad_and_output<char, std::__1::char_traits<char> >(std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> >, char const*, char const*, char const*, std::__1::ios_base&, char)
+      7    0.9%    1.2%  t std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)
+      5    0.7%    0.9%  T __kernelrpc_thread_policy_set
+      4    0.5%    0.7%  T ___workq_kernreturn
+      2    0.3%    0.3%  t node::fs::InternalModuleReadJSON(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.3%    0.3%  t node::cares_wrap::(anonymous namespace)::GetAddrInfo(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.3%    0.3%  t node::(anonymous namespace)::Parser::Execute(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.3%    0.3%  T node::binding::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.3%    0.3%  T _mach_vm_map
+      2    0.3%    0.3%  T ___getdirentries64
+      1    0.1%    0.2%  t non-virtual thunk to v8::internal::PointersUpdatingVisitor::~PointersUpdatingVisitor()
+      1    0.1%    0.2%  t node::fs::Open(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.2%  T node::loader::ModuleWrap::Evaluate(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.2%  T node::cares_wrap::ChannelWrap::~ChannelWrap()
+      1    0.1%    0.2%  T node::cares_wrap::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.2%  T _pthread_setspecific
+
+ [Summary]:
+   ticks  total  nonlib   name
+      0    0.0%    0.0%  JavaScript
+    566   75.6%   99.0%  C++
+      1    0.1%    0.2%  GC
+    177   23.6%          Shared libraries
+      6    0.8%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+    642   99.7%   85.7%  t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      2    0.3%    0.3%  t node::(anonymous namespace)::Parser::Execute(v8::FunctionCallbackInfo<v8::Value> const&)
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    254   33.9%  t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+    202   79.5%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+     72   35.6%      LazyCompile: ~configSecureContext node:internal/tls/secure-context:120:29
+     72  100.0%        LazyCompile: ~createSecureContext node:_tls_common:98:29
+     72  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+     72  100.0%            LazyCompile: ~createConnection node:https:111:26
+     17    8.4%      LazyCompile: ~SecureContext node:_tls_common:74:23
+     17  100.0%        LazyCompile: ~createSecureContext node:_tls_common:98:29
+     17  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+     17  100.0%            LazyCompile: ~createConnection node:https:111:26
+      7    3.5%      t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      5   71.4%        LazyCompile: ~isIPv6 node:internal/net:35:16
+      5  100.0%          LazyCompile: ~isIP node:internal/net:39:14
+      3   60.0%            LazyCompile: ~lookupAndConnect node:net:995:26
+      2   40.0%            LazyCompile: ~calculateServerName node:_http_agent:346:29
+      1   14.3%        LazyCompile: ~URL node:internal/url:620:14
+      1  100.0%          LazyCompile: ~request node:https:334:17
+      1  100.0%            LazyCompile: ~get node:https:386:13
+      1   14.3%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      7    3.5%      LazyCompile: ~TLSSocket._start node:_tls_wrap:947:38
+      7  100.0%        LazyCompile: ~onceWrapper node:events:504:21
+      7  100.0%          LazyCompile: ~emit node:events:340:44
+      7  100.0%            LazyCompile: ~afterConnect node:net:1119:22
+      6    3.0%      LazyCompile: ~handleWriteReq node:internal/stream_base_commons:45:24
+      6  100.0%        LazyCompile: ~writeGeneric node:internal/stream_base_commons:151:22
+      6  100.0%          LazyCompile: ~Socket._writeGeneric node:net:769:42
+      6  100.0%            LazyCompile: ~Socket._write node:net:806:35
+      5    2.5%      LazyCompile: ~resolve node:path:1091:10
+      4   80.0%        LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      4  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      4  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   20.0%        LazyCompile: ~Module._initPaths node:internal/modules/cjs/loader:1227:29
+      1  100.0%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:422:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      5    2.5%      LazyCompile: ~TLSSocket._wrapHandle node:_tls_wrap:594:43
+      5  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      5  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      5  100.0%            LazyCompile: ~createConnection node:https:111:26
+      4    2.0%      LazyCompile: ~WriteStream node:tty:85:21
+      4  100.0%        LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      2   50.0%          LazyCompile: ~getStdout node:internal/bootstrap/switches/is_main_thread:121:19
+      2  100.0%            LazyCompile: ~get node:internal/console/constructor:202:14
+      2   50.0%          LazyCompile: ~getStderr node:internal/bootstrap/switches/is_main_thread:133:19
+      2  100.0%            LazyCompile: ~Socket._destroy node:net:667:37
+      3    1.5%      LazyCompile: ~request node:https:334:17
+      3  100.0%        LazyCompile: ~get node:https:386:13
+      3  100.0%          Function: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:1:1
+      3  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      3    1.5%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      3    1.5%      LazyCompile: ~formatValue node:internal/util/inspect:726:21
+      3  100.0%        LazyCompile: ~inspect node:internal/util/inspect:286:17
+      3  100.0%          LazyCompile: ~formatWithOptionsInternal node:internal/util/inspect:1891:35
+      3  100.0%            LazyCompile: ~formatWithOptions node:internal/util/inspect:1883:27
+      3    1.5%      LazyCompile: ~emit node:events:340:44
+      1   33.3%        LazyCompile: ~finish node:internal/streams/writable:741:16
+      1  100.0%          LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1   33.3%        LazyCompile: ~_addListener node:events:418:22
+      1  100.0%          Function: ^addListener node:events:486:58
+      1  100.0%            LazyCompile: ~Readable.on node:internal/streams/readable:875:33
+      1   33.3%        LazyCompile: ~TLSSocket._finishInit node:_tls_wrap:918:43
+      1  100.0%          LazyCompile: ~ssl.onhandshakedone node:_tls_wrap:723:27
+      3    1.5%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      3  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      3  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+
+    210   28.0%  T node::native_module::NativeModuleEnv::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    210  100.0%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+    155   73.8%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+    148   95.5%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+     42   28.4%          Function: ~<anonymous> node:crypto:1:1
+     42  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     21   14.2%          Function: ~<anonymous> node:internal/crypto/cipher:1:1
+     21  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     20   13.5%          Function: ~<anonymous> node:tls:1:1
+     20  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     17   11.5%          Function: ~<anonymous> node:https:1:1
+     17  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     11    7.4%          Function: ~<anonymous> node:_http_server:1:1
+     11  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     10    6.8%          LazyCompile: ~lookupAndConnect node:net:995:26
+     10  100.0%            LazyCompile: ~Socket.connect node:net:937:36
+      7    4.7%          Function: ~<anonymous> node:internal/crypto/hkdf:1:1
+      7  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    2.0%          Function: ~<anonymous> node:tty:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    2.0%          Function: ~<anonymous> node:_tls_wrap:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    2.0%          Function: ~<anonymous> node:_http_common:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    1.4%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:422:29
+      2  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      2    1.4%          Function: ~<anonymous> node:net:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    1.4%          Function: ~<anonymous> node:internal/tls/secure-context:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    1.4%          Function: ~<anonymous> node:dns:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      7    4.5%        LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      7  100.0%          LazyCompile: ~loadNativeModule node:internal/modules/cjs/helpers:44:26
+      7  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+     55   26.2%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     55  100.0%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+     11   20.0%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+     11  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     10   18.2%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:422:29
+     10  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+     10   18.2%          Function: ~<anonymous> node:internal/process/esm_loader:1:1
+     10  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      6   10.9%          Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      6  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4    7.3%          Function: ~<anonymous> node:internal/modules/esm/module_map:1:1
+      4  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4    7.3%          Function: ~<anonymous> node:internal/modules/esm/load:1:1
+      4  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    3.6%          Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    3.6%          Function: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    3.6%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    3.6%          Function: ~<anonymous> node:internal/fs/promises:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    1.8%          LazyCompile: ~initializeSourceMapsHandlers node:internal/bootstrap/pre_execution:461:38
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1    1.8%          Function: ~<anonymous> node:internal/modules/esm/translators:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+
+     83   11.1%  /usr/lib/system/libsystem_pthread.dylib
+     77   92.8%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+     12   15.6%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+     12  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+     12  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+     12  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+     11   14.3%      LazyCompile: ~realpathSync node:fs:2408:22
+     11  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+     11  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+     11  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      6    7.8%      LazyCompile: ~value node:internal/console/constructor:320:20
+      6  100.0%        LazyCompile: ~log node:internal/console/constructor:358:6
+      6  100.0%          t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      6  100.0%            LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      5    6.5%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      5  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      5  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      5    6.5%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      5  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      5  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      5  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      4    5.2%      t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      3   75.0%        LazyCompile: ~isIPv6 node:internal/net:35:16
+      3  100.0%          LazyCompile: ~isIP node:internal/net:39:14
+      3  100.0%            LazyCompile: ~lookupAndConnect node:net:995:26
+      1   25.0%        LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      1  100.0%          LazyCompile: ~onceWrapper node:events:504:21
+      1  100.0%            LazyCompile: ~emit node:events:340:44
+      4    5.2%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      4  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      4    5.2%      LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      4  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      4  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      4  100.0%            LazyCompile: ~createConnection node:https:111:26
+      3    3.9%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:142:29
+      3  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      3  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      3    3.9%      LazyCompile: ~connect node:_tls_wrap:1597:35
+      3  100.0%        LazyCompile: ~createConnection node:https:111:26
+      3  100.0%          LazyCompile: ~createSocket node:_http_agent:314:53
+      3  100.0%            LazyCompile: ~addRequest node:_http_agent:242:49
+      3    3.9%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      3  100.0%        LazyCompile: ~Socket node:net:283:16
+      3  100.0%          LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      3  100.0%            LazyCompile: ~connect node:_tls_wrap:1597:35
+      2    2.6%      LazyCompile: ~setImmediate node:timers:278:22
+      2  100.0%        LazyCompile: ~onSocketCloseDestroySSL node:_tls_wrap:642:33
+      2  100.0%          Function: ^emit node:events:340:44
+      2  100.0%            LazyCompile: ~<anonymous> node:net:685:24
+      2    2.6%      Function: ~<anonymous> node:internal/modules/cjs/helpers:1:1
+      2  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2  100.0%            Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      2    2.6%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      2  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+      2    2.6%      Function: ~<anonymous> node:internal/crypto/util:1:1
+      2  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2  100.0%            Function: ~<anonymous> node:internal/tls/secure-context:1:1
+      1    1.3%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    1.3%      LazyCompile: ~get node:internal/console/constructor:202:14
+      1  100.0%        LazyCompile: ~value node:internal/console/constructor:320:20
+      1  100.0%          LazyCompile: ~log node:internal/console/constructor:358:6
+      1  100.0%            t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1    1.3%      LazyCompile: ~formatValue node:internal/util/inspect:726:21
+      1  100.0%        LazyCompile: ~inspect node:internal/util/inspect:286:17
+      1  100.0%          LazyCompile: ~formatWithOptionsInternal node:internal/util/inspect:1891:35
+      1  100.0%            LazyCompile: ~formatWithOptions node:internal/util/inspect:1883:27
+      1    1.3%      LazyCompile: ~createSecureContext node:_tls_common:98:29
+      1  100.0%        LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%          LazyCompile: ~createConnection node:https:111:26
+      1  100.0%            LazyCompile: ~createSocket node:_http_agent:314:53
+      1    1.3%      LazyCompile: ~Socket node:net:283:16
+      1  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%            LazyCompile: ~createConnection node:https:111:26
+      1    1.3%      LazyCompile: ~Module._resolveLookupPaths node:internal/modules/cjs/loader:667:38
+      1  100.0%        LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%          LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      1    1.3%      LazyCompile: ~IncomingMessage node:_http_incoming:51:25
+      1  100.0%        LazyCompile: ~parserOnHeadersComplete node:_http_common:77:33
+      1  100.0%          t node::(anonymous namespace)::Parser::Execute(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%            LazyCompile: ~socketOnData node:_http_client:480:22
+      1    1.3%      LazyCompile: ~Immediate node:internal/timers:600:14
+      1  100.0%        LazyCompile: ~setImmediate node:timers:278:22
+      1  100.0%          LazyCompile: ~onSocketCloseDestroySSL node:_tls_wrap:642:33
+      1  100.0%            Function: ^emit node:events:340:44
+      1    1.3%      LazyCompile: ~ClientRequest node:_http_client:106:23
+      1  100.0%        LazyCompile: ~request node:https:334:17
+      1  100.0%          LazyCompile: ~get node:https:386:13
+      1  100.0%            Function: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:1:1
+
+     49    6.5%  T _semaphore_create
+     33   67.3%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      4   12.1%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      4  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      4  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      4  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      3    9.1%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      2    6.1%      LazyCompile: ~realpathSync node:fs:2408:22
+      2  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      2    6.1%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      2  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    6.1%      LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:422:29
+      2  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      2  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    6.1%      LazyCompile: ~connect node:_tls_wrap:1597:35
+      2  100.0%        LazyCompile: ~createConnection node:https:111:26
+      2  100.0%          LazyCompile: ~createSocket node:_http_agent:314:53
+      2  100.0%            LazyCompile: ~addRequest node:_http_agent:242:49
+      2    6.1%      LazyCompile: ~<anonymous> node:internal/fs/utils:357:35
+      2  100.0%        LazyCompile: ~<anonymous> node:internal/fs/utils:668:38
+      2  100.0%          LazyCompile: ~realpathSync node:fs:2408:22
+      2  100.0%            LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1    3.0%      t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1  100.0%        LazyCompile: ~removeColors node:internal/util:76:22
+      1  100.0%          LazyCompile: ~isBelowBreakLength node:internal/util/inspect:1740:28
+      1  100.0%            LazyCompile: ~reduceToSingleString node:internal/util/inspect:1764:30
+      1    3.0%      LazyCompile: ~value node:internal/console/constructor:320:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:358:6
+      1  100.0%          t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1  100.0%            LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      1    3.0%      LazyCompile: ~storeHeader node:_http_outgoing:517:21
+      1  100.0%        LazyCompile: ~processHeader node:_http_outgoing:501:23
+      1  100.0%          LazyCompile: ~_storeHeader node:_http_outgoing:374:22
+      1  100.0%            LazyCompile: ~_implicitHeader node:_http_client:342:67
+      1    3.0%      LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%            LazyCompile: ~createConnection node:https:111:26
+      1    3.0%      LazyCompile: ~isEncoding node:buffer:529:40
+      1  100.0%        LazyCompile: ~assertEncoding node:internal/fs/utils:151:24
+      1  100.0%          LazyCompile: ~getOptions node:internal/fs/utils:314:20
+      1  100.0%            LazyCompile: ~readFileSync node:fs:450:22
+      1    3.0%      LazyCompile: ~initSocketHandle node:net:254:26
+      1  100.0%        LazyCompile: ~Socket node:net:283:16
+      1  100.0%          LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%            LazyCompile: ~connect node:_tls_wrap:1597:35
+      1    3.0%      LazyCompile: ~getOptionValue node:internal/options:32:24
+      1  100.0%        LazyCompile: ~setupDebugEnv node:internal/bootstrap/pre_execution:194:23
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    3.0%      LazyCompile: ~get pathname node:internal/url:875:15
+      1  100.0%        LazyCompile: ~urlToHttpOptions node:internal/url:1336:26
+      1  100.0%          LazyCompile: ~request node:https:334:17
+      1  100.0%            LazyCompile: ~get node:https:386:13
+      1    3.0%      LazyCompile: ~addRequest node:_http_agent:242:49
+      1  100.0%        LazyCompile: ~ClientRequest node:_http_client:106:23
+      1  100.0%          LazyCompile: ~request node:https:334:17
+      1  100.0%            LazyCompile: ~get node:https:386:13
+      1    3.0%      LazyCompile: ~_unrefTimer node:net:417:52
+      1  100.0%        LazyCompile: ~onStreamRead node:internal/stream_base_commons:171:22
+      1    3.0%      LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%        LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%          LazyCompile: ~createConnection node:https:111:26
+      1  100.0%            LazyCompile: ~createSocket node:_http_agent:314:53
+      1    3.0%      LazyCompile: ~Socket.connect node:net:937:36
+      1  100.0%        LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%          LazyCompile: ~createConnection node:https:111:26
+      1  100.0%            LazyCompile: ~createSocket node:_http_agent:314:53
+      1    3.0%      LazyCompile: ~<anonymous> node:path:1082:10
+      1  100.0%        LazyCompile: ~resolve node:path:1091:10
+      1  100.0%          LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1    3.0%      Function: ~<anonymous> node:internal/process/esm_loader:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1    3.0%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+      1    3.0%      Function: ~<anonymous> node:dns:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            LazyCompile: ~lookupAndConnect node:net:995:26
+
+     41    5.5%  /usr/lib/system/libsystem_c.dylib
+     32   78.0%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      4   12.5%      LazyCompile: ~value node:internal/console/constructor:320:20
+      4  100.0%        LazyCompile: ~log node:internal/console/constructor:358:6
+      4  100.0%          t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      4  100.0%            LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      4   12.5%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      4  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      4  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      3    9.4%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      3  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      3  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      3  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      3    9.4%      LazyCompile: ~realpathSync node:fs:2408:22
+      3  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      3  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      3  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      3    9.4%      LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      3  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      3  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      3  100.0%            LazyCompile: ~createConnection node:https:111:26
+      2    6.3%      t node::(anonymous namespace)::Parser::Execute(v8::FunctionCallbackInfo<v8::Value> const&)
+      2  100.0%        LazyCompile: ~socketOnData node:_http_client:480:22
+      2  100.0%          LazyCompile: ~emit node:events:340:44
+      2  100.0%            LazyCompile: ~addChunk node:internal/streams/readable:304:18
+      2    6.3%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:142:29
+      2  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      2  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    6.3%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      2  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+      1    3.1%      t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1  100.0%        LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      1  100.0%          LazyCompile: ~onceWrapper node:events:504:21
+      1  100.0%            LazyCompile: ~emit node:events:340:44
+      1    3.1%      LazyCompile: ~request node:https:334:17
+      1  100.0%        LazyCompile: ~get node:https:386:13
+      1  100.0%          Function: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1    3.1%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    3.1%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    3.1%      LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%        LazyCompile: ~createConnection node:https:111:26
+      1  100.0%          LazyCompile: ~createSocket node:_http_agent:314:53
+      1  100.0%            LazyCompile: ~addRequest node:_http_agent:242:49
+      1    3.1%      LazyCompile: ~_flush node:_http_outgoing:933:51
+      1  100.0%        LazyCompile: ~onSocketNT node:_http_client:789:20
+      1  100.0%          LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    3.1%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%        LazyCompile: ~Socket node:net:283:16
+      1  100.0%          LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%            LazyCompile: ~connect node:_tls_wrap:1597:35
+      1    3.1%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1    3.1%      Function: ~<anonymous> node:internal/crypto/util:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/tls/secure-context:1:1
+
+     23    3.1%  /usr/lib/libc++.1.dylib
+     20   87.0%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      2   10.0%      t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      2  100.0%        LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      2  100.0%          LazyCompile: ~onceWrapper node:events:504:21
+      2  100.0%            LazyCompile: ~emit node:events:340:44
+      2   10.0%      LazyCompile: ~realpathSync node:fs:2408:22
+      2  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1    5.0%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      1    5.0%      LazyCompile: ~strEscape node:internal/util/inspect:465:19
+      1  100.0%        LazyCompile: ~formatPrimitive node:internal/util/inspect:1382:25
+      1  100.0%          LazyCompile: ~formatValue node:internal/util/inspect:726:21
+      1  100.0%            LazyCompile: ~formatProperty node:internal/util/inspect:1672:24
+      1    5.0%      LazyCompile: ~setupPerfHooks node:internal/bootstrap/pre_execution:228:24
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~resolve node:path:1091:10
+      1  100.0%        LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~request node:https:334:17
+      1  100.0%        LazyCompile: ~get node:https:386:13
+      1  100.0%          Function: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1    5.0%      LazyCompile: ~pushAsyncContext node:internal/async_hooks:529:26
+      1  100.0%        LazyCompile: ~emitBeforeScript node:internal/async_hooks:499:26
+      1  100.0%          LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    5.0%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    5.0%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%            LazyCompile: ~createConnection node:https:111:26
+      1    5.0%      LazyCompile: ~isFull node:internal/fixed_queue:71:9
+      1  100.0%        LazyCompile: ~push node:internal/fixed_queue:99:7
+      1  100.0%          LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%            LazyCompile: ~onwrite node:internal/streams/writable:425:17
+      1    5.0%      LazyCompile: ~fromStringFast node:buffer:412:24
+      1  100.0%        LazyCompile: ~fromString node:buffer:431:20
+      1  100.0%          LazyCompile: ~from node:buffer:295:28
+      1  100.0%            Function: ~<anonymous> node:_http_server:1:1
+      1    5.0%      LazyCompile: ~formatWithOptions node:internal/util/inspect:1883:27
+      1  100.0%        LazyCompile: ~value node:internal/console/constructor:320:20
+      1  100.0%          LazyCompile: ~log node:internal/console/constructor:358:6
+      1  100.0%            t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1    5.0%      LazyCompile: ~formatValue node:internal/util/inspect:726:21
+      1  100.0%        LazyCompile: ~inspect node:internal/util/inspect:286:17
+      1  100.0%          LazyCompile: ~formatWithOptionsInternal node:internal/util/inspect:1891:35
+      1  100.0%            LazyCompile: ~formatWithOptions node:internal/util/inspect:1883:27
+      1    5.0%      LazyCompile: ~afterConnect node:net:1119:22
+      1    5.0%      LazyCompile: ~WritableState node:internal/streams/writable:77:23
+      1  100.0%        LazyCompile: ~Writable node:internal/streams/writable:219:18
+      1  100.0%          LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%            LazyCompile: ~Socket node:net:283:16
+
+     11    1.5%  T ___commpage_gettimeofday
+      9   81.8%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      4   44.4%      LazyCompile: ~storeHeader node:_http_outgoing:517:21
+      4  100.0%        LazyCompile: ~processHeader node:_http_outgoing:501:23
+      4  100.0%          LazyCompile: ~_storeHeader node:_http_outgoing:374:22
+      4  100.0%            LazyCompile: ~_implicitHeader node:_http_client:342:67
+      1   11.1%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      1   11.1%      LazyCompile: ~realpathSync node:fs:2408:22
+      1  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1   11.1%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   11.1%      LazyCompile: ~addRequest node:_http_agent:242:49
+      1  100.0%        LazyCompile: ~ClientRequest node:_http_client:106:23
+      1  100.0%          LazyCompile: ~request node:https:334:17
+      1  100.0%            LazyCompile: ~get node:https:386:13
+      1   11.1%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+
+     10    1.3%  /usr/lib/system/libsystem_platform.dylib
+      7   70.0%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1   14.3%      LazyCompile: ~value node:internal/console/constructor:320:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:358:6
+      1  100.0%          t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1  100.0%            LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      1   14.3%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      1   14.3%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1   14.3%      LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%        LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%          LazyCompile: ~createConnection node:https:111:26
+      1  100.0%            LazyCompile: ~createSocket node:_http_agent:314:53
+      1   14.3%      LazyCompile: ~Socket._destroy node:net:667:37
+      1  100.0%        LazyCompile: ~_destroy node:internal/streams/destroy:70:18
+      1  100.0%          LazyCompile: ~destroy node:internal/streams/destroy:32:17
+      1  100.0%            LazyCompile: ~onceWrapper node:events:504:21
+      1   14.3%      Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   14.3%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+
+      8    1.1%  t std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > std::__1::__pad_and_output<char, std::__1::char_traits<char> >(std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> >, char const*, char const*, char const*, std::__1::ios_base&, char)
+      8  100.0%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      2   25.0%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      2  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      2   25.0%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      2  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1   12.5%      LazyCompile: ~realpathSync node:fs:2408:22
+      1  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1   12.5%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   12.5%      LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%            LazyCompile: ~createConnection node:https:111:26
+      1   12.5%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+
+      8    1.1%  /usr/lib/system/libsystem_malloc.dylib
+      7   87.5%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1   14.3%      LazyCompile: ~tickOnSocket node:_http_client:722:22
+      1  100.0%        LazyCompile: ~onSocketNT node:_http_client:789:20
+      1  100.0%          LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1   14.3%      LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:422:29
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   14.3%      LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1  100.0%        LazyCompile: ~getStdout node:internal/bootstrap/switches/is_main_thread:121:19
+      1  100.0%          LazyCompile: ~get node:internal/console/constructor:202:14
+      1  100.0%            LazyCompile: ~value node:internal/console/constructor:320:20
+      1   14.3%      LazyCompile: ~Resolver node:internal/dns/utils:53:14
+      1  100.0%        Function: ~<anonymous> node:internal/dns/utils:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   14.3%      Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            LazyCompile: ~initializeSourceMapsHandlers node:internal/bootstrap/pre_execution:461:38
+      1   14.3%      Function: ~<anonymous> node:internal/crypto/util:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/tls/secure-context:1:1
+      1   14.3%      Function: ^normalizeString node:path:66:25
+      1  100.0%        LazyCompile: ~resolve node:path:1091:10
+      1  100.0%          LazyCompile: ~Module._initPaths node:internal/modules/cjs/loader:1227:29
+      1  100.0%            LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:422:29
+
+      8    1.1%  /usr/lib/system/libsystem_kernel.dylib
+      7   87.5%    t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1   14.3%      t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1  100.0%        LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      1  100.0%          LazyCompile: ~onceWrapper node:events:504:21
+      1  100.0%            LazyCompile: ~emit node:events:340:44
+      1   14.3%      LazyCompile: ~value node:internal/console/constructor:320:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:358:6
+      1  100.0%          t std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > >::push_back(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >&&)
+      1  100.0%            LazyCompile: ~<anonymous> /Users/denisslipko/Documents/express-roadmap/dist/modules/https/httpsModule.js:7:54
+      1   14.3%      LazyCompile: ~setupDebugEnv node:internal/bootstrap/pre_execution:194:23
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   14.3%      LazyCompile: ~Socket._writeGeneric node:net:769:42
+      1  100.0%        LazyCompile: ~connect node:net:776:42
+      1  100.0%          LazyCompile: ~onceWrapper node:events:504:21
+      1  100.0%            LazyCompile: ~emit node:events:340:44
+      1   14.3%      LazyCompile: ~Resolver node:internal/dns/utils:53:14
+      1  100.0%        Function: ~<anonymous> node:internal/dns/utils:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   14.3%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%        LazyCompile: ~Socket node:net:283:16
+      1  100.0%          LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%            LazyCompile: ~connect node:_tls_wrap:1597:35
+      1   14.3%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+
